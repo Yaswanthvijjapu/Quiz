@@ -13,8 +13,6 @@ import {
   where,
 } from 'firebase/firestore';
 
-// Quiz CRUD Operations
-// Create a quiz
 export const createQuiz = async (quizData) => {
   try {
     const quizRef = await addDoc(collection(db, 'quizzes'), {
@@ -27,7 +25,6 @@ export const createQuiz = async (quizData) => {
   }
 };
 
-// Get all quizzes
 export const getQuizzes = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, 'quizzes'));
@@ -37,7 +34,6 @@ export const getQuizzes = async () => {
   }
 };
 
-// Get a single quiz by ID
 export const getQuizById = async (quizId) => {
   try {
     const quizDoc = await getDoc(doc(db, 'quizzes', quizId));
@@ -50,7 +46,6 @@ export const getQuizById = async (quizId) => {
   }
 };
 
-// Update a quiz
 export const updateQuiz = async (quizId, quizData) => {
   try {
     const quizRef = doc(db, 'quizzes', quizId);
@@ -61,7 +56,6 @@ export const updateQuiz = async (quizId, quizData) => {
   }
 };
 
-// Delete a quiz
 export const deleteQuiz = async (quizId) => {
   try {
     await deleteDoc(doc(db, 'quizzes', quizId));
@@ -71,7 +65,6 @@ export const deleteQuiz = async (quizId) => {
   }
 };
 
-// Save quiz attempt for leaderboard
 export const saveQuizAttempt = async (attemptData) => {
   try {
     const attemptRef = await addDoc(collection(db, 'attempts'), {
@@ -84,7 +77,6 @@ export const saveQuizAttempt = async (attemptData) => {
   }
 };
 
-// Get leaderboard for a specific quiz
 export const getLeaderboard = async (quizId) => {
   try {
     const q = query(
