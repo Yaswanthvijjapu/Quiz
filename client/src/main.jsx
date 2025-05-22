@@ -5,6 +5,7 @@ import App from './App.jsx';
 import { store } from './store';
 import { initializeAuthListener } from './features/auth/authSlice';
 import './testFirebase'; // Import test file
+import './index.css'; // Import global styles
 
 // Initialize Firebase auth listener
 store.dispatch(initializeAuthListener());

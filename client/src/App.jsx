@@ -1,11 +1,11 @@
 // src/App.jsx
 import React from 'react';
+import LoginForm from './components/auth/LoginForm';
 
 function App() {
   return (
-    <div>
-      <h1>Quiz Builder + Leaderboard App</h1>
-      <p>Loading...</p>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <LoginForm />
     </div>
   );
 }
