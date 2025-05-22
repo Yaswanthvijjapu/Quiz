@@ -17,9 +17,9 @@ export const createQuiz = async (quizData) => {
   try {
     const quizRef = await addDoc(collection(db, 'quizzes'), {
       ...quizData,
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(), // Store as ISO string
     });
-    return { id: quizRef.id, ...quizData };
+    return { id: quizRef.id, ...quizData, createdAt: new Date().toISOString() };
   } catch (error) {
     throw new Error(error.message);
   }
