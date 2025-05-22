@@ -6,6 +6,7 @@ import LogoutButton from './components/auth/LogoutButton';
 import QuizForm from './components/quiz/QuizForm';
 import QuizList from './components/quiz/QuizList';
 import QuizPlayer from './components/quiz/QuizPlayer';
+import Leaderboard from './components/leaderboard/Leaderboard';
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             Create Quiz
           </Link>
         )}
+        <Link to="/leaderboard" className="text-blue-500 hover:underline mx-2">
+          Leaderboard
+        </Link>
       </nav>
       <div className="flex flex-col items-center gap-4 mb-8">
         <Routes>
@@ -37,6 +41,7 @@ function App() {
           />
           <Route path="/create-quiz" element={<QuizForm />} />
           <Route path="/quiz/:quizId" element={<QuizPlayer />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
       </div>
     </div>
