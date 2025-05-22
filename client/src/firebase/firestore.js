@@ -64,6 +64,33 @@ export const deleteQuiz = async (quizId) => {
     throw new Error(error.message);
   }
 };
+export const createAttempt = async (attemptData) => {
+  try {
+    const attemptRef = await addDoc(collection(db, 'attempts'), attemptData);
+    return { id: attemptRef.id, ...attemptData };
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const getUserAttempts = async (userId) => {
+  try {
+    const q = query(collection(db, 'attempts'), where('userId', '==', userId));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const getAllAttempts = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'attempts'));
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export const saveQuizAttempt = async (attemptData) => {
   try {
