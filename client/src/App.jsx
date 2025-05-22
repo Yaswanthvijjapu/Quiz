@@ -1,9 +1,13 @@
-import React from 'react'
+// src/App.jsx
+import React from 'react';
 
-const App = () => {
+function App() {
   return (
-    <div>App</div>
-  )
+    <div>
+      <h1>Quiz Builder + Leaderboard App</h1>
+      <p>Loading...</p>
+    </div>
+  );
 }
 
-export default App
+export default App;

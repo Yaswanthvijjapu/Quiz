@@ -1,27 +1,31 @@
 // src/testFirebase.js
-import { createQuiz, getQuizzes } from './firebase/firestore';
+import { store } from './store';
+import { signUp, logIn, logInWithGoogle, logOutUser } from './features/auth/authSlice';
 
-const testFirestore = async () => {
+const testAuthSlice = async () => {
   try {
-    console.log('Testing createQuiz...');
-    const quizData = {
-      title: 'Test Quiz',
-      category: 'General Knowledge',
-      difficulty: 'Easy',
-      questions: [
-        { question: 'What is 2+2?', options: ['3', '4', '5'], correctAnswer: '4' },
-      ],
-      tags: ['test', 'math'],
-    };
-    const newQuiz = await createQuiz(quizData);
-    console.log('Quiz Created:', newQuiz);
+    // Test signup
+    console.log('Testing signup...');
+    await store.dispatch(signUp({ email: 'test@example.com', password: 'Test1234!' })).unwrap();
+    console.log('Signup Success:', store.getState().auth.user);
 
-    console.log('Testing getQuizzes...');
-    const quizzes = await getQuizzes();
-    console.log('Quizzes:', quizzes);
+    // Test login
+    console.log('Testing login...');
+    await store.dispatch(logIn({ email: 'test@example.com', password: 'Test1234!' })).unwrap();
+    console.log('Login Success:', store.getState().auth.user);
+
+    // Test Google login (manual interaction required)
+    console.log('Testing Google login...');
+    // Uncomment to test: await store.dispatch(logInWithGoogle()).unwrap();
+    // console.log('Google Login Success:', store.getState().auth.user);
+
+    // Test logout
+    console.log('Testing logout...');
+    await store.dispatch(logOutUser()).unwrap();
+    console.log('Logout Success:', store.getState().auth.user);
   } catch (error) {
-    console.error('Firestore Test Error:', error.message);
+    console.error('Auth Slice Test Error:', error);
   }
 };
 
-testFirestore();
+testAuthSlice();
