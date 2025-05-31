@@ -1,5 +1,4 @@
 // src/App.jsx
-import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import LoginForm from './components/auth/LoginForm';
 import LogoutButton from './components/auth/LogoutButton';
